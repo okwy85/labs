@@ -1,0 +1,13 @@
+#ansible test-node -m copy -a "s/home/ansadmin/shell.yaml dest=/home/ansadmin/playbook" --> copy file from source to destination(remote server)
+
+---
+ - hosts: test-node
+   become: true
+   tasks:
+     - name: Copy file from mgt to test-node
+       copy: src=/home/ansadmin/shell.yaml
+             dest=/home/ansadmin/playbook  
+             owner=ansadmin 
+             group=ansadmin 
+             mode=0666
+...
